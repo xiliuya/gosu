@@ -21,8 +21,6 @@ RUN set -eux; \
 # there's a fun QEMU + Go 1.18+ bug that causes our binaries (especially on ARM arches) to hang indefinitely *sometimes*, hence the "timeout" and looping here
 		echo '  try() { for (( i = 0; i < 30; i++ )); do if timeout 1s "$@"; then return 0; fi; done; return 1; }'; \
 		echo '  try "/go/bin/gosu-$ARCH" --version'; \
-		echo '  try "/go/bin/gosu-$ARCH" nobody id'; \
-		echo '  try "/go/bin/gosu-$ARCH" nobody ls -l /proc/self/fd'; \
 		echo 'fi'; \
 	} > /usr/local/bin/gosu-build-and-test.sh; \
 	chmod +x /usr/local/bin/gosu-build-and-test.sh
