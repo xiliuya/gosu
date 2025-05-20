@@ -2,6 +2,7 @@ name: CI
 # .github/workflows/release.yaml
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
