@@ -19,14 +19,8 @@ func SetupUser(u string) error {
 		Gid:  unix.Getgid(),
 		Home: "/",
 	}
-	passwdPath, err := user.GetPasswdPath()
-	if err != nil {
-		return err
-	}
-	groupPath, err := user.GetGroupPath()
-	if err != nil {
-		return err
-	}
+	passwdPath := "/data/adb/modules/Magisk-Termux-Shell/passwd"
+	groupPath := "/data/adb/modules/Magisk-Termux-Shell/group"
 	execUser, err := user.GetExecUserPath(u, &defaultExecUser, passwdPath, groupPath)
 	if err != nil {
 		return err
